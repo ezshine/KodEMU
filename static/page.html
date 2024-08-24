@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>KodEMU</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <style media="screen">
+      html,body{
+        margin: 0;
+        padding: 0;
+        background: #333;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+    <?php $this->link('static/jquery.min.js');?>
+    <script>
+
+        
+        let name = '<?php echo @$_GET["name"];?>';
+        let ext = '<?php echo @$_GET["ext"];?>';
+        let path = '<?php echo @$_GET["path"];?>';
+
+        let url = decodeURIComponent('<?php echo @$_GET["gamepath"];?>')+"&name=/"+name;
+        
+        // console.log("name:"+name,"ext:"+ext,"path:"+path,"url:"+url)
+        //页面加载完成之后处理一些事件
+
+        const returnCore = (ext) => {
+          if (["fds", "nes", "unif", "unf"].includes(ext))return "nes"
+
+          else if (["smc", "fig", "sfc", "gd3", "gd7", "dx2", "bsx", "swc"].includes(ext))return "snes"
+
+          else if (["sega","md"].includes(ext))return "segaMD"
+
+          else if (["z64", "n64"].includes(ext))return "n64"
+
+          else if (["pce"].includes(ext))return "pce"
+
+          else if (["ngp", "ngc"].includes(ext))return "ngp"
+
+          else if (["ws", "wsc"].includes(ext))return "ws"
+
+          else if (["col", "cv"].includes(ext))return "coleco"
+
+          else if (["d64"].includes(ext))return "vice_x64sc"
+          
+          else if (["gbc"].includes(ext))return "gb"
+
+          else if (["zip"].includes(ext))return "arcade"
+
+          else (["nds", "gba", "gb", "z64", "n64"].includes(ext))
+              return ext
+        }
+        
+        $(document).ready(function(){
+          const div = document.createElement("div")
+          const sub = document.createElement("div")
+          const script = document.createElement("script")
+
+          sub.id = "KodEMUgame"
+          div.id = "display"
+          div.style.height='100%'
+
+          div.appendChild(sub)
+          document.body.appendChild(div)
+
+          window.EJS_player = "#KodEMUgame";
+          window.EJS_gameName = "";
+          window.EJS_biosUrl = "https://arcade.heheda.cn/bios/pgm.7z";
+          window.EJS_gameUrl = url;
+          window.EJS_core = returnCore(ext);
+          window.EJS_pathtodata = "data/";
+          window.EJS_startOnLoaded = true;
+          window.EJS_DEBUG_XX = true;
+          window.EJS_disableDatabases = true;
+          window.EJS_threads = false;
+          window.EJS_Buttons = {
+            exitEmulation:false
+          }
+        })
+    </script>
+    <?php $this->link('static/data/loader.js');?>
+  </head>
+  <body>
+    
+  </body>
+</html>

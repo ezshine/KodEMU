@@ -1,0 +1,42 @@
+{
+	"id":"KodEMU",
+	"name":"Kod Emulatorjs",
+	"title":"Kod万能模拟器",
+	"version":"1.0",
+    "source":{
+		"icon":"{{pluginHost}}static/image/icon.png",
+		"screenshoot":[
+			"{{pluginHost}}static/image/1.jpg",
+            "{{pluginHost}}static/image/2.jpg",
+            "{{pluginHost}}static/image/3.jpg"
+		]
+	},
+    "category":"media,file",
+    "description":"gb模拟器、sega模拟器、gba模拟器、nes模拟器、sfc模拟器、fc模拟器、街机模拟器",
+	"keywords":"nes,fc,sfc,gba,gb,sega,md,mame,neogeo,街机,模拟器,游戏",
+	"auther":{
+		"copyright":"ezshine",
+		"homePage":"https://x.com/@ezshine"
+	},
+	"configItem":{
+	    "pluginAuth":{
+			"type":"userSelect",
+			"value":{"all":1},
+			"display":"{{LNG['admin.plugin.auth']}}",
+			"desc":"{{LNG['admin.plugin.authDesc']}}",
+			"require":1
+		},
+		"fileExt":{
+			"type":"tags",
+			"display":"{{LNG['admin.plugin.fileExt']}}",
+			"desc":"{{LNG['admin.plugin.fileExtDesc']}}",
+			"value":"nes,gba,gb,gbc,snes,sfc,sega,zip"
+		},
+		"fileSort":{
+			"type":"number",
+			"display":"{{LNG['admin.plugin.fileSort']}}",
+			"desc":"{{LNG['admin.plugin.fileSortDesc']}}",
+			"value":10
+		}
+	}
+}
